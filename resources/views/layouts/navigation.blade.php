@@ -15,14 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                </div>
-                @role(\App\RoleEnum::ADMIN)
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    @role(\App\RoleEnum::ADMIN)
                         <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                             {{ __('Users') }}
                         </x-nav-link>
-                    </div>
-                @endrole
+                    @endrole
+                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
+                        {{ __('Clients') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -90,6 +91,9 @@
                     {{ __('Users') }}
                 </x-responsive-nav-link>
             @endrole
+            <x-responsive-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
+                {{ __('Clients') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

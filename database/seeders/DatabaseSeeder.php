@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\RoleEnum;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,22 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(RoleSeeder::class);
-
-        User::factory()->create([
-            'first_name' => 'Admin',
-            'last_name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => 'secret'
-        ])->syncRoles([RoleEnum::ADMIN]);
-        // ])->syncRoles(['admin']);
-        // ])->assignRole('admin');
-
-        User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // $this->call(RoleSeeder::class);
+        $this->call([
+            RoleSeeder::class,
+            UserSeeder::class,
+            ClientSeeder::class
+        ]);
     }
 }
